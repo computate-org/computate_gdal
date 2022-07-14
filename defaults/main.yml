@@ -1,0 +1,14 @@
+---
+APP_NAME: gdal
+APP_DEPENDENCIES:
+  - git
+  - cmake
+APP_PREFIX: "{{ lookup('env', 'HOME') }}/.local"
+APP_ROOT: "{{ false if APP_PREFIX is regex('^/home') else true }}"
+APP_SRC: "{{ APP_PREFIX }}/src/{{ APP_NAME  }}"
+APP_REPO_SSH: git@github.com:OSGeo/gdal.git
+APP_REPO_HTTPS: "{{ APP_REPO_SSH | replace('git@github.com:', 'https://github.com/') }}"
+APP_TAG: v3.5.1
+APP_README: "{{ APP_SRC }}/README.md"
+MAKE_CORES: "{{ ansible_processor_vcpus | default(1) }}"
+PKG_INSTALLER: yum
