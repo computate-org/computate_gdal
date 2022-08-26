@@ -13,7 +13,6 @@
   file:
     name: "{{ APP_SRC }}"
     state: directory
-    owner: "{{ APP_USER }}"
   become: "{{ APP_ROOT }}"
 - name: "Check for the README file {{ APP_README }}"
   stat:
